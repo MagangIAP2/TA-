@@ -23,29 +23,30 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
+                    {{-- <a href="{{route('diagram', $datas->user_id)}}" class="btn btn-primary m-1" type="button">Lihat Diagram</a> --}}
                 <div class="card">
                         <table class="table table-bordered table-hover">
                         <thead>
                             <tr>
                                 <th>Nomor</th>
-                                <th>Lingkar Perut Kanan</th>
-                                <th>Lingkar Perut Atas</th>
-                                <th>Lingkar Total</th>
+                                <th>Tinggi Fundus Uteri</th>
+                                <th>Nilai [ X ]</th>
+                                <th>Taksiran berat janin</th>
                                 <th>Minggu Ke</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                        @forelse ($dataperut as $data)
+                        @forelse ($datas as $data)
                             @if ($data->user_id == auth()->user()->id)
                                 <tr>
-                                    <td>1</td>
-                                    <td>{{$data->lingkar_perut_kanan}} cm</td>
-                                    <td>{{$data->lingkar_perut_atas}} cm</td>
-                                    <td>{{$data->lingkar_total}} cm</td>
+                                    <td>#</td>
+                                    <td>{{$data->tfu}} cm</td>
+                                    <td>{{$data->x}} cm</td>
+                                    <td>{{$data->tbh}} cm</td>
                                     <td>{{$data->minggu_ke}}</td>
-                                    <td><td>
-                                        <a href="{{route('diagram', $data->user_id)}}"> View Digaram</a>
+                                    <td>
+                                        <a href="{{route('diagram', $data->user_id)}}"> View Diagram</a>
                                     </td>
                                 </tr>
                             @endif

@@ -27,38 +27,30 @@
                 <div class="card">
                     <div class="card-header">Sales Graph</div>
                     <div class="card-body" id="chart-diagram">
-                    {{-- {!! $usersChart->container() !!} --}}
                     </div>
                 </div>
                 </div>
-                <a href=""> View Digaram</a>
                 <div class="col-md-12">
                 <div class="card">
-                    <!-- <div class="card-header">Latest Transaction</div>
-                    <div class="card-body">
-                        <div class="table-responsive"> -->
+
                         <table class="table table-bordered table-hover">
                         <thead>
                             <tr>
                                 <th>Nomor</th>
-                                <th>Lingkar Perut Kanan</th>
-                                <th>Lingkar Perut Atas</th>
-                                <th>Lingkar Total</th>
+                                <th>Tinggi Fundus Uteri</th>
+                                <th>Nilai [ X ]</th>
+                                <th>Taksiran berat janin</th>
                                 <th>Minggu Ke</th>
-                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                         @forelse ($datas as $data)
                             <tr>
-                                <td>1</td>
-                                <td>{{$data->lingkar_perut_kanan}} cm</td>
-                                <td>{{$data->lingkar_perut_atas}} cm</td>
-                                <td>{{$data->lingkar_total}} cm</td>
+                                <td>#</td>
+                                <td>{{$data->tfu}} cm</td>
+                                <td>{{$data->x}} cm</td>
+                                <td>{{$data->tbh}} cm</td>
                                 <td>{{$data->minggu_ke}}</td>
-                                <td><td>
-
-                                </td>
                             </tr>
                             @empty
                             <tr>
@@ -91,10 +83,10 @@
         type: 'line'
     },
     title: {
-        text: 'Monthly Average Temperature'
+        text: 'Taksiran Berat Janin'
     },
     subtitle: {
-        text: 'Source: WorldClimate.com'
+        text: 'Tugas Akhir Arif Ariyanto S.Kom'
     },
     xAxis: {
         categories: {!! json_encode($minggu) !!}
@@ -114,7 +106,7 @@
     },
     series: [{
         name: 'Minimal',
-        data: [7.0, 6.9, 9.5]
+        data: [1000, 2500, 3000]
     },
     {
         name: 'Aman',
@@ -122,7 +114,7 @@
     },
     {
         name: 'Maksimal',
-        data: [25, 45, 65]
+        data: [7000, 8000, 9000]
     }]
 });
 

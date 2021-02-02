@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 02, 2021 at 04:02 PM
+-- Generation Time: Feb 02, 2021 at 06:14 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.12
 
@@ -31,10 +31,10 @@ SET time_zone = "+00:00";
 CREATE TABLE `data_perut` (
   `id` bigint(20) NOT NULL,
   `user_id` int(10) NOT NULL,
-  `lingkar_perut_atas` varchar(20) NOT NULL,
-  `lingkar_perut_kanan` varchar(20) NOT NULL,
+  `tfu` int(20) NOT NULL,
+  `x` int(10) NOT NULL,
   `minggu_ke` varchar(20) NOT NULL,
-  `lingkar_total` int(20) DEFAULT NULL,
+  `tbh` int(20) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
@@ -44,10 +44,10 @@ CREATE TABLE `data_perut` (
 -- Dumping data for table `data_perut`
 --
 
-INSERT INTO `data_perut` (`id`, `user_id`, `lingkar_perut_atas`, `lingkar_perut_kanan`, `minggu_ke`, `lingkar_total`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(5, 1, '10', '10', 'minggu ke-1', 11, '2020-12-29 07:17:46', '2020-12-29 07:17:46', NULL),
-(6, 1, '11', '11', 'minggu ke-2', 11, '2020-12-29 08:18:43', '2020-12-29 08:18:43', NULL),
-(7, 1, '12', '12', 'minggu ke-3', 24, '2020-12-29 08:19:53', '2020-12-29 08:19:53', NULL);
+INSERT INTO `data_perut` (`id`, `user_id`, `tfu`, `x`, `minggu_ke`, `tbh`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(8, 1, 50, 11, 'minggu ke-1', 6045, '2021-02-02 10:44:54', '2021-02-02 10:44:54', NULL),
+(9, 1, 45, 12, 'minggu ke-2', 5115, '2021-02-02 10:59:48', '2021-02-02 10:59:48', NULL),
+(10, 1, 31, 12, 'minggu ke-3', 2945, '2021-02-02 11:05:17', '2021-02-02 11:05:17', NULL);
 
 --
 -- Indexes for dumped tables
@@ -67,7 +67,7 @@ ALTER TABLE `data_perut`
 -- AUTO_INCREMENT for table `data_perut`
 --
 ALTER TABLE `data_perut`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

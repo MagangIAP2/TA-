@@ -13,6 +13,7 @@ class InputController extends Controller
     //
     public function index()
     {
+
         return view('admin.tambah_data');
     }
 
@@ -22,17 +23,17 @@ class InputController extends Controller
         try {
             //code...
             $dataperut = DataPerut::create([
-                'user_id'               => auth()->user()->id,
-                'lingkar_perut_atas'    => $req->lingkar_perut_atas,
-                'lingkar_perut_kanan'   => $req->lingkar_perut_kanan,
-                'minggu_ke'             => $req->minggu_ke,
-                'lingkar_total'         => ($req->lingkar_perut_atas - 12) * 155,
+                'user_id'       => auth()->user()->id,
+                'tfu'           => $req->tfu,
+                'x'             => $req->x,
+                'minggu_ke'     => $req->minggu_ke,
+                'tbh'           => ($req->tfu - $req->x) * 155,
             ]);
         } catch (\Exception $e) {
             DB::rollback();
             throw $e;
         }
         DB::commit();
-        return redirect()->route('tambah.data');
+        return redirect()->route('dashboard.index');
     }
 }
