@@ -30,57 +30,54 @@ Route::post('register', [AuthController::class, 'register']);
 
 
 Route::group(['middleware' => 'auth'], function () { // Route di bawah hanya bisa diakses kalau sudah login
-Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard.index');
+    Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard.index');
+    Route::get('/digaram-user/{user_id}', [HomeController::class, 'diagram'])->name('diagram');
 
-Route::get('/tambah-data', [InputController::class, 'index'])->name('tambah.data');
-Route::post('/tambah-data/store', [InputController::class, 'store'])->name('tambah.store');
-
-
-
-
-        // Route::middleware(['admin'])->group(function() {
-        
-        //         Route::get('admin', [DashboardController::class, 'index']);
-
-        //         Route::get('category', [CategoryController::class, 'index']);
-
-        //         Route::get('category/create', [CategoryController::class, 'create']);
-
-        //         Route::post('category/store', [CategoryController::class, 'store']);
-
-        //         Route::get('category/{id}', [CategoryController::class, 'show'])->where('id','[0-9]+');
-
-        //         Route::get('category/{id}/edit', [CategoryController::class, 'edit'])->where('id','[0-9]+');
-
-        //         Route::put('category/update/{id}', [CategoryController::class, 'update'])->where('id','[0-9]+');
-
-        //         Route::delete('category/delete/{id}', [CategoryController::class, 'destroy'])->where('id','[0-9]+');
+    Route::get('/tambah-data', [InputController::class, 'index'])->name('tambah.data');
+    Route::post('/tambah-data/store', [InputController::class, 'store'])->name('tambah.store');
 
 
-        //         Route::resource('product', ProductController::class);
-        //         //Route::get('product/import', ProductController::class);
 
 
-        //         Route::get('transaction', [TransactionController::class, 'index']);
+    // Route::middleware(['admin'])->group(function() {
 
-        //         Route::get('transaction/import', [TransactionController::class, 'import']);
+    //         Route::get('admin', [DashboardController::class, 'index']);
 
-        //         Route::get('transaction/export', [TransactionController::class, 'export']);
+    //         Route::get('category', [CategoryController::class, 'index']);
 
-        //         Route::post('transaction/store_import', [TransactionController::class, 'store_import']);
+    //         Route::get('category/create', [CategoryController::class, 'create']);
 
-        // });
+    //         Route::post('category/store', [CategoryController::class, 'store']);
 
-         Route::middleware(['user'])->group(function() {
-        
-                 Route::get('home', function(){
-                         return view('user.home');
-                 });
+    //         Route::get('category/{id}', [CategoryController::class, 'show'])->where('id','[0-9]+');
 
-         });
+    //         Route::get('category/{id}/edit', [CategoryController::class, 'edit'])->where('id','[0-9]+');
 
-        Route::get('logout', [AuthController::class, 'logout'])->name('logout');
-        
+    //         Route::put('category/update/{id}', [CategoryController::class, 'update'])->where('id','[0-9]+');
+
+    //         Route::delete('category/delete/{id}', [CategoryController::class, 'destroy'])->where('id','[0-9]+');
 
 
-}); 
+    //         Route::resource('product', ProductController::class);
+    //         //Route::get('product/import', ProductController::class);
+
+
+    //         Route::get('transaction', [TransactionController::class, 'index']);
+
+    //         Route::get('transaction/import', [TransactionController::class, 'import']);
+
+    //         Route::get('transaction/export', [TransactionController::class, 'export']);
+
+    //         Route::post('transaction/store_import', [TransactionController::class, 'store_import']);
+
+    // });
+
+    Route::middleware(['user'])->group(function () {
+
+        Route::get('home', function () {
+            return view('user.home');
+        });
+    });
+
+    Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+});

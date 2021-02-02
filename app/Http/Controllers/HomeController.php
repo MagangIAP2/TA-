@@ -10,18 +10,39 @@ use App\Models\DataPerut;
 class HomeController extends Controller
 {
     //
-    public function index(){
-        $dataperut = DataPerut::get();
-        $minggu = DataPerut::get('minggu_ke');
-        $total = DataPerut::get('lingkar_total');
+    public function index()
+    {
+        $dataperut = DataPerut::all();
 
-        // dd($total);
-        
-        $usersChart = new UserChart;
-        $usersChart->labels($minggu->toArray());
-        $usersChart->dataset('Users by trimester', 'line', [10,11,12,14,32]);
+        // Menyimpan data untuk chart
+        $minggu = [];
+        $total = [];
 
-        return view('admin.dashboard', compact('usersChart', 'dataperut'));
+        // Looping
+        foreach ($dataperut as $dp) {
+            $minggu[] = $dp->minggu_ke;
+            $total[] =  $dp->lingkar_total;
+        }
+
+
+        return view('admin.dashboard', compact('dataperut', 'minggu', 'total'));
     }
 
+    public function diagram($user_id)
+    {
+        $datas = DataPerut::where('user_id', $user_id)->get();
+
+        // Menyimpan data untuk chart
+        $minggu = [];
+        $total = [];
+
+        // Looping
+        foreach ($datas as $dp) {
+            $minggu[] = $dp->minggu_ke;
+            $total[] =  $dp->lingkar_total;
+        }
+
+        // dd($total);
+        return view('diagram', compact('datas', 'minggu', 'total'));
+    }
 }

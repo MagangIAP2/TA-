@@ -12,9 +12,15 @@ class DataPerut extends Model
     protected $table = 'data_perut';
 
     protected $fillable = [
-        'lingkar_perut_kanan',
+        'user_id',
+        'lingkar_perut_kanan', // Tinggi Fundus Uteri
         'lingkar_perut_atas',
         'minggu_ke',
-        'lingkar_total'
+        'lingkar_total' //Taksiran Berat Janin dalam gram
     ];
+
+    public function user()
+    {
+        $this->belongsTo('App\Models\User', 'user_id');
+    }
 }

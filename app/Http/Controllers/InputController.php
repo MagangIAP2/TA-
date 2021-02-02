@@ -11,19 +11,22 @@ use App\Models\DataPerut;
 class InputController extends Controller
 {
     //
-    public function index(){
+    public function index()
+    {
         return view('admin.tambah_data');
     }
 
-    public function store(Request $req){
+    public function store(Request $req)
+    {
         DB::begintransaction();
         try {
             //code...
             $dataperut = DataPerut::create([
+                'user_id'               => auth()->user()->id,
                 'lingkar_perut_atas'    => $req->lingkar_perut_atas,
                 'lingkar_perut_kanan'   => $req->lingkar_perut_kanan,
                 'minggu_ke'             => $req->minggu_ke,
-                'lingkar_total'         => ($req->lingkar_perut_atas + $req->lingkar_perut_kanan),
+                'lingkar_total'         => ($req->lingkar_perut_atas - 12) * 155,
             ]);
         } catch (\Exception $e) {
             DB::rollback();

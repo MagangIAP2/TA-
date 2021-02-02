@@ -19,43 +19,42 @@ class AuthController extends Controller
     {
         if (Auth::check()) { // true sekalian session field di users nanti bisa dipanggil via Auth
             //Login Success
-            if(Auth::user()->role == "admin"){
+            if (Auth::user()->role == "admin") {
                 return redirect()->to('admin');
             } else {
                 return redirect()->to('home');
             }
-            
         }
         return view('login');
     }
- 
+
     public function login(Request $request)
     {
         $rules = [
             'username'              => 'required',
             'password'              => 'required|string'
         ];
- 
+
         $messages = [
-            'username.required'        => 'Username wajib diisi',
+            'username.required'        => 'username wajib diisi',
             // 'email.email'           => 'Email tidak valid',
             'password.required'     => 'Password wajib diisi',
             'password.string'       => 'Password harus berupa string'
         ];
- 
+
         $validator = Validator::make($request->all(), $rules, $messages);
- 
-        if($validator->fails()){
+
+        if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput($request->all);
         }
- 
+
         $data = [
-            'username'      => $request->input('username'),
-            'password'      => $request->input('password'),
+            'username'      => $request->username,
+            'password'      => $request->password,
         ];
- 
+
         // Auth::attempt($data);
- 
+
         if (Auth::attempt($data)) {
             # code...
             return redirect()->route('dashboard.index');
@@ -63,15 +62,13 @@ class AuthController extends Controller
             # code...
             return redirect()->route('auth.login');
         }
-
- 
     }
- 
+
     public function showFormRegister()
     {
         return view('register');
     }
- 
+
     public function register(Request $request)
     {
         $rules = [
@@ -81,9 +78,9 @@ class AuthController extends Controller
             'email'         => 'required|min:3|max:35',
             'no_telp'       => 'required|min:3|max:35',
             'password'      => 'required|min:3|max:35',
-            
+
         ];
- 
+
         $messages = [
             // 'nik.required'              => 'NIK wajib diisi',
             // 'nik.min'                   => 'NIK minimal 3 karakter',
@@ -103,13 +100,13 @@ class AuthController extends Controller
             'password.required'         => 'Password wajib diisi',
             'password.confirmed'        => 'Password tidak sama dengan konfirmasi password'
         ];
- 
+
         $validator = Validator::make($request->all(), $rules, $messages);
- 
-        if($validator->fails()){
+
+        if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput($request->all);
         }
- 
+
         $user = new User;
         $user->nik          = 0;
         $user->username     = ucwords(strtolower($request->username));
@@ -119,8 +116,8 @@ class AuthController extends Controller
         $user->password     = Hash::make($request->password);
         // $user->email_verified_at = \Carbon\Carbon::now();
         $simpan = $user->save();
- 
-        if($simpan){
+
+        if ($simpan) {
             Session::flash('success', 'Register berhasil! Silahkan login untuk mengakses data');
             return redirect()->route('login');
         } else {
@@ -128,9 +125,10 @@ class AuthController extends Controller
             return redirect()->route('register');
         }
     }
- 
 
-    public function registrasi(Request $req){
+
+    public function registrasi(Request $req)
+    {
         // $this->validate([
 
         // ])
@@ -159,6 +157,4 @@ class AuthController extends Controller
         Auth::logout(); // menghapus session yang aktif
         return redirect()->route('login');
     }
- 
- 
 }
