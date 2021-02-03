@@ -75,49 +75,101 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/6.0.6/highcharts.js" charset="utf-8"></script>
+    {{-- <script src="https://code.highcharts.com/highcharts.js"></script> --}}
     <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
 
     <script>
-      Highcharts.chart('chart-diagram', {
-    chart: {
-        type: 'line'
-    },
-    title: {
-        text: 'Taksiran Berat Janin'
-    },
-    subtitle: {
-        text: 'Tugas Akhir Arif Ariyanto S.Kom'
-    },
-    xAxis: {
-        categories: {!! json_encode($minggu) !!}
-    },
-    yAxis: {
-        title: {
-            text: 'Centimeter (Cm)'
-        }
-    },
-    plotOptions: {
-        line: {
-            dataLabels: {
-                enabled: true
-            },
-            enableMouseTracking: false
-        }
-    },
-    series: [{
-        name: 'Minimal',
-        data: [1000, 2500, 3000]
-    },
-    {
-        name: 'Aman',
-        data: {!! json_encode($total) !!}
-    },
-    {
-        name: 'Maksimal',
-        data: [7000, 8000, 9000]
-    }]
-});
+        Highcharts.chart('chart-diagram', {
 
+            title: {
+                text: 'Solar Employment Growth by Sector, 2010-2016'
+            },
+
+            subtitle: {
+                text: 'Source: thesolarfoundation.com'
+            },
+
+            yAxis: {
+                title: {
+                    text: 'Number of Employees'
+                }
+            },
+
+            xAxis: {
+                accessibility: {
+                    rangeDescription: 'Range: 2010 to 2017'
+                }
+            },
+
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle'
+            },
+
+            plotOptions: {
+                series: {
+                    label: {
+                        connectorAllowed: false
+                    },
+                    pointStart: 2010
+                }
+            },
+            // Edit data pasti buat diagram disini, yg aman jangan di edit. itu dari database
+            series: [{
+                name: 'Merah Bawah',
+                data: [500, 1000, 1500, 2500],
+                lineColor: 'red',
+                color: 'red'
+            },{
+                name: 'Kuning Bawah',
+                data: [800, 1300, 1800, 2800],
+                lineColor:'yellow'
+                // #99d65c
+            },{
+                name: 'Hijau Bawah',
+                data: [1200, 1600, 2100, 3100],
+                lineColor:'#99d65c'
+            },{
+                name: 'Aman',
+                data: {!! json_encode($total) !!},
+                // data: [1500, 1900, 2400, 3400],
+                lineColor:'green'
+            },{
+                name: 'Hijau Atas',
+                data: [1800, 2200, 2700, 3700],
+                lineColor: '#99d65c'
+            },{
+                name: 'Kuning Atas',
+                data: [2100, 2500, 3100, 4000],
+                lineColor:'yellow'
+            },{
+                name: 'Merah Atas',
+                data: [2400, 2800, 3400, 4300],
+                lineColor:'red'
+            }],
+
+            responsive: {
+                rules: [{
+                    condition: {
+                        maxWidth: 500
+                    },
+                    chartOptions: {
+                        legend: {
+                            layout: 'horizontal',
+                            align: 'center',
+                            verticalAlign: 'bottom'
+                        }
+                    }
+                }]
+            }
+
+        });
     </script>
 
     {{-- {!! $usersChart->script() !!} --}}

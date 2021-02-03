@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 02, 2021 at 06:14 PM
+-- Generation Time: Feb 03, 2021 at 02:35 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.12
 
@@ -45,9 +45,10 @@ CREATE TABLE `data_perut` (
 --
 
 INSERT INTO `data_perut` (`id`, `user_id`, `tfu`, `x`, `minggu_ke`, `tbh`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(8, 1, 50, 11, 'minggu ke-1', 6045, '2021-02-02 10:44:54', '2021-02-02 10:44:54', NULL),
-(9, 1, 45, 12, 'minggu ke-2', 5115, '2021-02-02 10:59:48', '2021-02-02 10:59:48', NULL),
-(10, 1, 31, 12, 'minggu ke-3', 2945, '2021-02-02 11:05:17', '2021-02-02 11:05:17', NULL);
+(8, 1, 50, 11, 'minggu ke-1', 1500, '2021-02-02 10:44:54', '2021-02-02 10:44:54', NULL),
+(9, 1, 45, 12, 'minggu ke-2', 1900, '2021-02-02 10:59:48', '2021-02-02 10:59:48', NULL),
+(10, 1, 31, 12, 'minggu ke-3', 2400, '2021-02-02 11:05:17', '2021-02-02 11:05:17', NULL),
+(11, 1, 23, 12, 'minggu ke-4', 3400, '2021-02-02 11:05:17', '2021-02-02 11:05:17', NULL);
 
 --
 -- Indexes for dumped tables
@@ -67,7 +68,7 @@ ALTER TABLE `data_perut`
 -- AUTO_INCREMENT for table `data_perut`
 --
 ALTER TABLE `data_perut`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
