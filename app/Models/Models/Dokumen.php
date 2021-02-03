@@ -1,19 +1,20 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Dokumen extends Model
 {
     use HasFactory;
-    // sambungkan model ini dengan table categories
-    protected $table = "categories";
+
+    protected $table = "dokumen";
 
     protected $fillable = [
         'user_id',
         'name', // Tinggi Fundus Uteri
+        'dokumen',
     ];
 
     public function user()

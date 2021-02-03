@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Charts\DataPerut;
+use App\Models\Models\Dokumen;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\DataPerut;
-use App\Models\Models\Dokumen;
 use Illuminate\Support\Facades\Storage;
 
-class InputController extends Controller
+class InputUserController extends Controller
 {
     //
     public function index()
     {
 
-        return view('admin.tambah_data');
+        return view('user.tambah_data');
     }
 
     public function store(Request $req)
@@ -34,7 +34,7 @@ class InputController extends Controller
             throw $e;
         }
         DB::commit();
-        return redirect()->route('dashboard.index');
+        return redirect()->route('dashboard.user.index');
     }
 
     public function storeDokumen(Request $req)

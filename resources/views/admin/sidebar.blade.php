@@ -19,6 +19,8 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
             data-accordion="false">
+
+            @if (auth()->user()->role == 1)
             <li class="nav-item">
                 <a href="{{ route('dashboard.index')}}" class="nav-link{{ (request()->segment(1) == "admin") ? "active" : "" }}">
                     <i class="nav-icon fas fa-th"></i>
@@ -37,6 +39,27 @@
                     </p>
                 </a>
             </li>
+
+            @else
+            <li class="nav-item">
+                <a href="{{ route('dashboard.user.index')}}" class="nav-link{{ (request()->segment(1) == "admin") ? "active" : "" }}">
+                    <i class="nav-icon fas fa-th"></i>
+                    <p>
+                        Graphic Perkembangan
+
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{route('tambah.user.data')}}" class="nav-link{{ (request()->segment(1) == "category") ? "active" : "" }}">
+                    <i class="nav-icon fas fa-tags"></i>
+                    <p>
+                        Input Data Kehamilan
+
+                    </p>
+                </a>
+            </li>
+            @endif
 
 
             <li class="nav-header">Setting</li>

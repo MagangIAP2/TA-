@@ -19,6 +19,7 @@ use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InputController;
+use App\Http\Controllers\InputUserController;
 
 
 Route::get('/', [AuthController::class, 'showFormLogin'])->name('auth.login');
@@ -30,11 +31,18 @@ Route::post('register', [AuthController::class, 'register']);
 
 
 Route::group(['middleware' => 'auth'], function () { // Route di bawah hanya bisa diakses kalau sudah login
-    Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard.index');
+    Route::get('/dashboard-admin', [HomeController::class, 'index'])->name('dashboard.index');
     Route::get('/digaram-user/{user_id}', [HomeController::class, 'diagram'])->name('diagram');
 
     Route::get('/tambah-data', [InputController::class, 'index'])->name('tambah.data');
     Route::post('/tambah-data/store', [InputController::class, 'store'])->name('tambah.store');
+    Route::post('/tambah-data-dokumen/store', [InputController::class, 'storeDokumen'])->name('tambah.dokumen.store');
+
+    Route::get('/dashboard-user', [HomeController::class, 'userIndex'])->name('dashboard.user.index');
+    Route::get('/tambah-data-user', [InputUserController::class, 'index'])->name('tambah.user.data');
+    Route::post('/tambah-data-user/store', [InputUserController::class, 'store'])->name('tambah.user.store');
+    Route::post('/tambah-data-user-dokumen/store', [InputUserController::class, 'storeDokumen'])->name('tambah.user.dokumen.store');
+
 
 
 

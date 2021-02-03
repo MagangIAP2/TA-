@@ -7,7 +7,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0 text-dark">Dashboard</h1>
+                <h1 class="m-0 text-dark">Hi Admin ! {{auth()->user()->nama_lengkap}}</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -37,10 +37,11 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @php $no = 1; @endphp
                         @forelse ($datas as $data)
                             @if ($data->user_id == auth()->user()->id)
                                 <tr>
-                                    <td>#</td>
+                                    <td>{{ $no++ }}</td>
                                     <td>{{$data->tfu}} cm</td>
                                     <td>{{$data->x}} cm</td>
                                     <td>{{$data->tbh}} cm</td>

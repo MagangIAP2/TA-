@@ -16,6 +16,13 @@ class HomeController extends Controller
         return view('admin.dashboard', compact('datas'));
     }
 
+    public function userIndex()
+    {
+        $datas = DataPerut::get();
+
+        return view('user.home', compact('datas'));
+    }
+
     public function diagram($user_id)
     {
         $datas = DataPerut::where('user_id', $user_id)->get();
