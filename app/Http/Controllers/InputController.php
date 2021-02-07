@@ -36,6 +36,14 @@ class InputController extends Controller
         return redirect()->route('dashboard.index');
     }
 
+    public function delete($id)
+    {
+        $datas = DataPerut::find($id);
+        $datas->delete();
+
+        return redirect()->route('dashboard.index');
+    }
+
     // public function storeDokumen(Request $req)
     // {
     //     $path = Storage::put('images', $req->file('dokumen'));

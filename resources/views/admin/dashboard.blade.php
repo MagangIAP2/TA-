@@ -47,7 +47,13 @@
                                     <td>{{$data->tbh}} cm</td>
                                     <td>{{$data->minggu_ke}}</td>
                                     <td>
-                                        <a href="{{route('diagram', $data->user_id)}}"> View Diagram</a>
+                                        <a href="{{route('diagram', $data->user_id)}}" class="btn btn-primary"> View Diagram</a>
+                                        <form action="{{route('delete', $data->id)}}" method="post" style="display: inline-block">
+                                            @method('DELETE')
+                                            @csrf
+                                            <button type="submit" class="btn btn-danger"> Hapus Data </button>
+                                        </form>
+
                                     </td>
                                 </tr>
                             @endif
