@@ -38,9 +38,8 @@
                         <div class="form-group">
                             <label for="x">Nilai [ X ]</label>
                             <input type="text" name="x" class="form-control" id="exampleInputPassword1" placeholder="Masukan Nilai [ X ]">
-                            <span> X = 13 jika bagian tubuh janin (biasanya kepala) belum masuk panggul</span> <br>
-                            <span> X = 12 jika bagian tubuh janin sudah berada di pintu panggul</span><br>
-                            <span> X = 11 jika bagian tubuh janin sudah masuk panggul</span>
+                            <span> X = 11 jika bagian tubuh janin (biasanya kepala) belum masuk panggul</span> <br>
+                            <span> X = 12 jika bagian tubuh janin sudah masuk panggul</span>
                         </div>
                         <div class="form-group">
                             <label for="minggu_ke">minggu ke</label>
@@ -59,7 +58,7 @@
             </div>
         </div>
     </div>
-    <div class="content">
+    <!-- <div class="content">
         <div class="container-fluid">
             <div class="row">
 
@@ -73,7 +72,6 @@
                         <div class="form-group">
                             <label for="name">Nama Lengkap</label>
                             <input type="text" name="name" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Nama Lengkap">
-                            <!-- <small id="lingkar_perut_kanan"  class="form-text text-muted"> -->
                         </div>
                         <div class="form-group">
                             <label for="dokumen">Upload Dokumen</label>
@@ -88,7 +86,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 </div>
 
 @endsection

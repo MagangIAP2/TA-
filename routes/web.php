@@ -38,10 +38,10 @@ Route::group(['middleware' => 'auth'], function () { // Route di bawah hanya bis
     Route::post('/tambah-data/store', [InputController::class, 'store'])->name('tambah.store');
     Route::post('/tambah-data-dokumen/store', [InputController::class, 'storeDokumen'])->name('tambah.dokumen.store');
 
-    Route::get('/dashboard-user', [HomeController::class, 'userIndex'])->name('dashboard.user.index');
-    Route::get('/tambah-data-user', [InputUserController::class, 'index'])->name('tambah.user.data');
-    Route::post('/tambah-data-user/store', [InputUserController::class, 'store'])->name('tambah.user.store');
-    Route::post('/tambah-data-user-dokumen/store', [InputUserController::class, 'storeDokumen'])->name('tambah.user.dokumen.store');
+    // Route::get('/dashboard-user', [HomeController::class, 'userIndex'])->name('dashboard.user.index');
+    // Route::get('/tambah-data-user', [InputUserController::class, 'index'])->name('tambah.user.data');
+    // Route::post('/tambah-data-user/store', [InputUserController::class, 'store'])->name('tambah.user.store');
+    // Route::post('/tambah-data-user-dokumen/store', [InputUserController::class, 'storeDokumen'])->name('tambah.user.dokumen.store');
 
 
 

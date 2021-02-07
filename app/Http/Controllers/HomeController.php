@@ -28,16 +28,16 @@ class HomeController extends Controller
         $datas = DataPerut::where('user_id', $user_id)->get();
 
         // Menyimpan data untuk chart
-        $minggu = [];
+       // $minggu = [];
         $total = [];
 
         // Looping
         foreach ($datas as $dp) {
-            $minggu[] = $dp->minggu_ke;
+           // $minggu[] = $dp->minggu_ke;
             $total[] =  $dp->tbh;
         }
 
         // dd($minggu);
-        return view('diagram', compact('datas', 'minggu', 'total'));
+        return view('diagram', compact('datas', 'total'));
     }
 }

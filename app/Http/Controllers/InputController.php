@@ -13,7 +13,6 @@ class InputController extends Controller
     //
     public function index()
     {
-
         return view('admin.tambah_data');
     }
 
@@ -37,22 +36,22 @@ class InputController extends Controller
         return redirect()->route('dashboard.index');
     }
 
-    public function storeDokumen(Request $req)
-    {
-        $path = Storage::put('images', $req->file('dokumen'));
-        DB::begintransaction();
-        try {
-            //code...
-            $dokumen = Dokumen::create([
-                'user_id'       => auth()->user()->id,
-                'name'          => $req->name,
-                'dokumen'       => $path,
-            ]);
-        } catch (\Exception $e) {
-            DB::rollback();
-            throw $e;
-        }
-        DB::commit();
-        return redirect()->route('dashboard.user.index');
-    }
+    // public function storeDokumen(Request $req)
+    // {
+    //     $path = Storage::put('images', $req->file('dokumen'));
+    //     DB::begintransaction();
+    //     try {
+    //         //code...
+    //         $dokumen = Dokumen::create([
+    //             'user_id'       => auth()->user()->id,
+    //             'name'          => $req->name,
+    //             'dokumen'       => $path,
+    //         ]);
+    //     } catch (\Exception $e) {
+    //         DB::rollback();
+    //         throw $e;
+    //     }
+    //     DB::commit();
+    //     return redirect()->route('dashboard.user.index');
+    // }
 }

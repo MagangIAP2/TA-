@@ -48,20 +48,16 @@ class AuthController extends Controller
             return redirect()->back()->withErrors($validator)->withInput($request->all);
         }
 
-        // $data = [
-        //     'username'      => $request->username,
-        //     'password'      => $request->password,
-        //     'role'          => 1
-        // ];
+        $data = [
+            'username'      => $request->username,
+            'password'      => $request->password,
+        ];
 
         // Auth::attempt($data);
 
-        if (Auth::attempt(['username' => $request->username, 'password' => $request->password, 'role' => 1])) {
+        if (Auth::attempt($data)) {
             # code...
             return redirect()->route('dashboard.index');
-        } elseif (Auth::attempt(['username' => $request->username, 'password' => $request->password, 'role' => 2])) {
-            # code...
-            return redirect()->route('dashboard.user.index');
         } else {
             return redirect()->route('auth.login');
         }
